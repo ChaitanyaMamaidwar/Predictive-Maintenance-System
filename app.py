@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request
-import joblib
 
 app = Flask(__name__)
-
-model = joblib.load("model/predictive_model.pkl")
 
 @app.route("/")
 def home():
@@ -11,13 +8,13 @@ def home():
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    temp = float(request.form["temperature"])
-    vib = float(request.form["vibration"])
-    pres = float(request.form["pressure"])
 
-    prediction = model.predict([[temp, vib, pres]])
+    temperature = float(request.form["temperature"])
+    vibration = float(request.form["vibration"])
+    pressure = float(request.form["pressure"])
 
-    if prediction[0] == 1:
+    # Temporary prediction logic
+    if temperature > 80 or vibration > 50:
         result = "Machine will FAIL soon"
     else:
         result = "Machine is SAFE"

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predictive Maintenance System</title>
+</head>
+<body>
+
+    <h1>Predictive Maintenance System</h1>
+
+    <form action="/predict" method="post">
+
+        <label>Temperature:</label>
+        <input type="text" name="temperature"><br><br>
+
+        <label>Vibration:</label>
+        <input type="text" name="vibration"><br><br>
+
+        <label>Pressure:</label>
+        <input type="text" name="pressure"><br><br>
+
+        <button type="submit">Predict</button>
+
+    </form>
+
+    {% if result %}
+        <h2>{{ result }}</h2>
+    {% endif %}
+
+</body>
+</html>

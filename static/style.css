@@ -1,0 +1,116 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full page background */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+}
+
+/* Main container */
+.main-container {
+
+    background: rgba(255,255,255,0.05);
+
+    padding: 30px;
+
+    border-radius: 15px;
+
+    width: 420px;
+
+    box-shadow: 0 0 25px rgba(0,255,255,0.2);
+
+    backdrop-filter: blur(10px);
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: cyan;
+    font-weight: bold;
+}
+
+/* Subtitle */
+.subtitle {
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: #aaa;
+}
+
+/* Input fields */
+input {
+
+    width: 100%;
+
+    padding: 10px;
+
+    margin: 10px 0;
+
+    border-radius: 8px;
+
+    border: none;
+
+    outline: none;
+}
+
+/* Button */
+button {
+
+    width: 100%;
+
+    padding: 12px;
+
+    margin-top: 10px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: linear-gradient(90deg, cyan, blue);
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Result colors */
+.safe {
+    color: lime;
+    text-align: center;
+}
+
+.fail {
+    color: red;
+    text-align: center;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    font-size: 12px;
+    margin-top: 15px;
+    color: #888;
+}

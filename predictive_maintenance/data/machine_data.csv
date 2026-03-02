@@ -1,0 +1,25 @@
+@app.route("/machine/<int:machine_id>")
+def view_machine(machine_id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM machines WHERE id = ?", (machine_id,))
+    machine = cursor.fetchone()
+
+    if not machine:
+        conn.close()
+        return "Machine not found!"
+
+    cursor.execute("""
+        SELECT * FROM sensor_data
+        WHERE machine_id = ?
+        ORDER BY created_at DESC
+        LIMIT 1
+    """, (machine_id,))
+    sensor = cursor.fetchone()
+
+    conn.close()
+
+    return render_template("machine_detail.html",
+                           machine=machine,
+                           sensor=sensor)

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Home | Predictive Maintenance{% endblock %}
+{% block content %}
+<section class="panel hero">
+  <h1>Predictive Maintenance System</h1>
+  <p>Track machine health, evaluate risk, and act before failure happens.</p>
+
+  <div class="actions">
+    <a class="btn btn-primary" href="{{ url_for('add_machine') }}">Add New Machine</a>
+    <a class="btn btn-secondary" href="{{ url_for('check_machine') }}">Check Machine Condition</a>
+  </div>
+</section>
+{% endblock %}

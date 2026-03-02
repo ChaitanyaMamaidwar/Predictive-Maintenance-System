@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Check Machine{% endblock %}
+{% block content %}
+<section class="panel">
+  <h2>Check Machine Condition</h2>
+
+  {% if machines and machines|length > 0 %}
+  <form method="POST" class="form-grid" id="check-machine-form">
+    <label>Select Machine
+      <select name="machine_id" id="machine_id" required>
+        <option value="" disabled selected>Choose a machine</option>
+        {% for machine in machines %}
+        <option value="{{ machine.id }}">{{ machine.name }} | {{ machine.location }}</option>
+        {% endfor %}
+      </select>
+    </label>
+
+    <label>Current Temperature
+      <input type="number" step="0.1" name="temperature" required />
+    </label>
+
+    <label>Current Pressure
+      <input type="number" step="0.1" name="pressure" required />
+    </label>
+
+    <label>Current Vibration
+      <input type="number" step="0.1" name="vibration" required />
+    </label>
+
+    <label>Current Humidity
+      <input type="number" step="0.1" name="humidity" required />
+    </label>
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-secondary">Check Condition</button>
+      <a class="btn btn-ghost" href="{{ url_for('index') }}">Back</a>
+    </div>
+  </form>
+  <script>
+    // Prevent accidental submit on Enter; move focus to the next field.
+    const form = document.getElementById("check-machine-form");
+    const order = Array.from(
+      form.querySelectorAll("select, input, button[type='submit']")
+    );
+
+    form.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter") return;
+      if (event.target.tagName === "BUTTON") return;
+
+      event.preventDefault();
+      const index = order.indexOf(event.target);
+      if (index >= 0 && index < order.length - 1) {
+        order[index + 1].focus();
+      }
+    });
+  </script>
+  {% else %}
+    <p class="muted">No machines found. Add a machine first.</p>
+    <a class="btn btn-primary" href="{{ url_for('add_machine') }}">Add Machine</a>
+  {% endif %}
+</section>
+{% endblock %}
